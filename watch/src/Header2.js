@@ -1,0 +1,225 @@
+// import logo from '../img/watchLogo.jpg';
+// import search from '../img/search.png';
+// import cart from '../img/cart.png';
+// import React, {Component} from 'react';
+// import Homepage from './Homepage/Homepage';
+// import AboutUs from './About Us/AboutUs';
+// import Collection from './Collection Page/Collection';
+
+// class Main_Menu extends Component{
+
+//   constructor(props) {
+//     super(props);
+//     this.state = {
+//       currentPage: 'Homepage', // Initial page
+//     };
+//   }
+
+//   handlePageChange = (pageName) => {
+//     this.setState({ currentPage: pageName });
+//   };
+
+//   render(){
+//     const { currentPage } = this.state;
+//     return (
+//       <div className="container-fluid border border-bottom-1" style={{ fontFamily: 'Poppins, sans-serif', fontWeight: 400 }}>
+//         <style>{`
+//           .nav-link {
+//             position: relative;
+//             font-weight: 400;
+//             color: #252525;
+//           }
+
+//           .nav-link::after, .dropdown-toggle::after {
+//             content: '';
+//             position: absolute;
+//             left: 0;
+//             bottom: -2px;
+//             width: 100%;
+//             height: 2px;
+//             background-color: black;
+//             transform: scaleX(0);
+//             transition: transform 0.3s ease-in-out;
+//           }
+//           .nav-link:hover::after, .dropdown-toggle:hover::after {
+//             transform: scaleX(1);
+//             border-width: 2px;
+//             height: 2px;
+//           }
+
+//           .navbar-toggler:focus,
+//           .navbar-toggler:active {
+//             box-shadow: none;
+//             outline: none;
+//             border: none;
+//           }
+
+//           @media (max-width: 991px) {
+//             .nav-link::after, .dropdown-toggle::after {
+//               display: none;
+//             }
+
+//             .desktop-aboutus {
+//               display: none; !important;
+//             }
+//           }
+
+//           @media (max-width: 991px) {
+//             .desktop-aboutus-content a {
+//               display: none !important;
+//             }
+//           }
+
+//           @media (min-width: 992px) {
+//             .mobile-aboutus a {
+//               display: none;
+//             }
+//           }
+
+//           .search-icon-col {
+//             justify-content: end !important;
+//           }
+
+//           .close-btn {
+//             background: none;
+//             border: none;
+//             font-size: 24px;
+//             cursor: pointer;
+//             width: 1em;
+//             height: 1em;
+//             position: relative;
+//           }
+
+//           .close-btn::before, .close-btn::after {
+//             content: '';
+//             position: absolute;
+//             left: 0;
+//             top: 20px;
+//             width: 100%;
+//             height: 2px;
+//             background-color: #252525;
+//             transform-origin: center;
+//           }
+
+//           .close-btn::before {
+//             transform: rotate(45deg);
+//           }
+
+//           .close-btn::after {
+//             transform: rotate(-45deg);
+//           }
+//         `}</style>
+
+//         <div className="row align-items-stretch">
+
+//           {/* Column 1: Navigation Menu */}
+//           <div className="col-4 d-flex align-items-center justify-content-center" style={{ height: '103px' }}>
+//             <nav className="navbar navbar-expand-lg w-100">
+//               <div className="container-fluid">
+//                 <button className="navbar-toggler border-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+//                   <span className="navbar-toggler-icon"></span>
+//                 </button>
+
+//                 {/* Standard Navbar for Desktop */}
+//                 <div className="collapse navbar-collapse d-none d-lg-flex justify-content-center" id="navbarNavDropdown">
+//                   <ul className="navbar-nav text-uppercase">
+//                     <li className="nav-item">
+//                       <a className="nav-link fs-5" href="#" onClick={() => this.handlePageChange('Collection')}>Collection</a>
+//                     </li>
+//                     <li className="nav-item dropdown">
+//                       <a className="nav-link dropdown-toggle fs-5" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Brands<i className="bi bi-chevron-down"></i></a>
+//                       <ul className="dropdown-menu">
+//                         <li><a className="dropdown-item" href="#">Rolex</a></li>
+//                         <li><a className="dropdown-item" href="#">Omega</a></li>
+//                         <li><a className="dropdown-item" href="#">Tag Heuer</a></li>
+//                       </ul>
+//                     </li>
+//                     <li className="nav-item">
+//                       <a className="nav-link fs-5" href="#">Men</a>
+//                     </li>
+//                     <li className="nav-item">
+//                       <a className="nav-link fs-5" href="#">Women</a>
+//                     </li>
+//                   </ul>
+//                 </div>
+//               </div>
+//             </nav>
+//           </div>
+
+//           {/* Column 2: Logo */}
+//           <div className="col-4 text-center d-flex align-items-center justify-content-center">
+//             <a href="#" onClick={() => this.handlePageChange('Homepage')}>
+//               <img src={logo} width="100" height="101" alt="Logo" />
+//             </a>
+//           </div>
+
+//           {/* Column 3:  */}
+//           <div className="col-2 d-flex align-items-center justify-content-center desktop-aboutus-content" style={{ height: '103px' }}></div>
+
+//           {/* Column 4: About Us Menu Item (Visible only on Desktop) Search Icon  Cart Icon */}
+
+//           <div className="col-2 d-flex align-items-center justify-content-end gap-3 pe-4" style={{ height: '103px' }}>
+//             <div className="desktop-aboutus-content">
+//               <a className="nav-link fs-5 text-uppercase" href="#" onClick={() => this.handlePageChange('AboutUs')}>About Us</a>
+//             </div>
+//             <img src={search} width="25" height="25" alt="search" style={{ cursor: 'pointer' }} />
+//             <img src={cart} width="30" height="30" alt="cart" style={{ cursor: 'pointer' }} data-bs-toggle="offcanvas" data-bs-target="#offcanvasCart" aria-controls="offcanvasCart" />
+//           </div>
+
+//           <div className="offcanvas offcanvas-end" tabIndex="-1" id="offcanvasCart" aria-labelledby="offcanvasCartLabel">
+//               <div className="offcanvas-header">
+//                   <h5 className="offcanvas-title" id="offcanvasCartLabel">Your Cart</h5>
+//                   <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+//               </div>
+//               <div className="offcanvas-body">
+//                   {/* Cart contents go here */}
+//                   <p>Your cart is currently empty.</p>
+//               </div>
+//           </div>
+
+//         </div>
+
+//         {/* Offcanvas Navigation for Mobile */}
+//         <div className="offcanvas offcanvas-start border-0" tabIndex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+//           <div className="offcanvas-header justify-content-start ps-3">
+//             <button type="button" className="close-btn" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+//           </div>
+//           <div className="offcanvas-body">
+//             <ul className="navbar-nav text-uppercase">
+//                 <li className="nav-item">
+//                     <a className="nav-link fs-5" href="#">Collection</a>
+//                 </li>
+//                 <li className="nav-item dropdown">
+//                   <a className="nav-link dropdown-toggle fs-5" href="#" role="button" data-bs-toggle="collapse" data-bs-target="#mobileDropdown" aria-expanded="false">
+//                       Brands <i className="bi bi-chevron-down"></i>
+//                   </a>
+//                   <ul className="collapse list-unstyled" id="mobileDropdown">
+//                       <li><a className="dropdown-item" href="#">Rolex</a></li>
+//                       <li><a className="dropdown-item" href="#">Omega</a></li>
+//                       <li><a className="dropdown-item" href="#">Tag Heuer</a></li>
+//                   </ul>
+//                 </li>
+//                 <li className="nav-item">
+//                     <a className="nav-link fs-5" href="#">Men</a>
+//                 </li>
+//                 <li className="nav-item">
+//                     <a className="nav-link fs-5" href="#">Women</a>
+//                 </li>
+//                 <li className="nav-item mobile-aboutus">
+//                     <a className="nav-link fs-5" href="#">About Us</a>
+//                 </li>
+//             </ul>
+//           </div>
+//         </div>    
+//         <div>
+//           {currentPage === 'Homepage' && <Homepage></Homepage>}
+//           {currentPage === 'AboutUs' && <AboutUs></AboutUs>}
+//           {currentPage === 'Collection'&& <Collection></Collection>}
+//         </div>    
+//       </div>
+
+//     );
+//   }
+// }
+
+// export default Main_Menu;
